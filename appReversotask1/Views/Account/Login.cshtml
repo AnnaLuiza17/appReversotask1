@@ -1,0 +1,48 @@
+﻿@model appReversotask1.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Acesso ao Sistema";
+}
+
+<div class="row justify-content-center align-items-center min-vh-75 mt-4">
+    <div class="col-11 col-sm-8 col-md-6 col-lg-4">
+        <div class="card shadow border-0 rounded-4">
+            <!-- Cabeçalho -->
+            <div class="card-header bg-primary bg-gradient text-white text-center py-4 rounded-top-4 border-0">
+                <h4 class="fw-bold mb-1">Clínica Vida & Saúde</h4>
+                <span class="badge bg-white text-primary rounded-pill px-3 py-1 fw-normal">Acesso do Paciente</span>
+            </div>
+
+            <!-- Corpo do Formulário -->
+            <div class="card-body p-4">
+                <form asp-action="Login" method="post">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small" role="alert"></div>
+
+                    <div class="mb-4">
+                        <label asp-for="Cpf" class="form-label fw-semibold text-secondary">CPF</label>
+                        <input asp-for="Cpf" class="form-control form-control-lg fs-6" placeholder="000.000.000-00" autocomplete="off" />
+                        <span asp-validation-for="Cpf" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg fw-bold shadow-sm">
+                            Entrar
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Rodapé -->
+            <div class="card-footer bg-light text-center py-3 rounded-bottom-4 border-0">
+                <span class="text-muted small">Ainda não tem cadastro?</span>
+                <a asp-controller="Paciente" asp-action="Create" class="text-decoration-none fw-semibold ms-1">Cadastre-se aqui</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

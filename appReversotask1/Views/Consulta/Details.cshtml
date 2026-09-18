@@ -1,0 +1,67 @@
+﻿@model appReversotask1.Models.Consulta
+
+@{
+    ViewData["Title"] = "Detalhes da Consulta";
+}
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow border-0 rounded-4">
+            <!-- Cabeçalho -->
+            <div class="card-header bg-primary bg-gradient text-white p-4 rounded-top-4 border-0">
+                <h4 class="fw-bold mb-1">Detalhes da Consulta</h4>
+                <p class="text-white-50 mb-0 small">Informações gerais do agendamento</p>
+            </div>
+
+            <!-- Corpo com Dados -->
+            <div class="card-body p-4">
+                <dl class="row mb-0 gy-3 align-items-center">
+                    <dt class="col-sm-4 text-muted fw-semibold">
+                        @Html.DisplayNameFor(model => model.DataHora)
+                    </dt>
+                    <dd class="col-sm-8 fw-semibold text-dark mb-0">
+                        @Html.DisplayFor(model => model.DataHora)
+                    </dd>
+
+                    <dt class="col-sm-4 text-muted fw-semibold">
+                        @Html.DisplayNameFor(model => model.StatusConsulta)
+                    </dt>
+                    <dd class="col-sm-8 mb-0">
+                        @switch (Model?.StatusConsulta)
+                        {
+                            case "Realizada":
+                                <span class="badge bg-success rounded-pill px-3 py-2">Realizada</span>
+                                break;
+                            case "Cancelada":
+                                <span class="badge bg-danger rounded-pill px-3 py-2">Cancelada</span>
+                                break;
+                            default:
+                                <span class="badge bg-warning text-dark rounded-pill px-3 py-2">@(Model?.StatusConsulta ?? "Agendada")</span>
+                                break;
+                        }
+                    </dd>
+
+                    <dt class="col-sm-4 text-muted fw-semibold">
+                        @Html.DisplayNameFor(model => model.Medico)
+                    </dt>
+                    <dd class="col-sm-8 text-dark mb-0">
+                        @Html.DisplayFor(model => model.Medico.Nome)
+                    </dd>
+
+                    <dt class="col-sm-4 text-muted fw-semibold">
+                        @Html.DisplayNameFor(model => model.Paciente)
+                    </dt>
+                    <dd class="col-sm-8 text-dark mb-0">
+                        @Html.DisplayFor(model => model.Paciente.Nome)
+                    </dd>
+                </dl>
+            </div>
+
+            <!-- Rodapé com Ações -->
+            <div class="card-footer bg-light p-3 rounded-bottom-4 border-0 d-flex justify-content-between align-items-center">
+                <a asp-action="Index" class="btn btn-outline-secondary px-4">Voltar</a>
+                <a asp-action="Edit" asp-route-id="@Model?.Codigo" class="btn btn-primary px-4 fw-bold shadow-sm">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>

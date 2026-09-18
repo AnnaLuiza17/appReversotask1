@@ -1,0 +1,63 @@
+﻿@model appReversotask1.Models.Consulta
+
+@{
+    ViewData["Title"] = "Nova Consulta";
+}
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow border-0 rounded-4">
+            <!-- Cabeçalho -->
+            <div class="card-header bg-primary bg-gradient text-white p-4 rounded-top-4 border-0">
+                <h4 class="fw-bold mb-1">Cadastrar Consulta</h4>
+                <p class="text-white-50 mb-0 small">Preencha os dados da consulta abaixo</p>
+            </div>
+
+            <!-- Formulário -->
+            <div class="card-body p-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small" role="alert"></div>
+
+                    <!-- Data e Hora -->
+                    <div class="mb-3">
+                        <label asp-for="DataHora" class="form-label fw-semibold text-secondary">Data e Hora</label>
+                        <input asp-for="DataHora" class="form-control" />
+                        <span asp-validation-for="DataHora" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="mb-3">
+                        <label asp-for="StatusConsulta" class="form-label fw-semibold text-secondary">Status da Consulta</label>
+                        <select asp-for="StatusConsulta" class="form-select">
+                            <option value="Agendada">Agendada</option>
+                            <option value="Realizada">Realizada</option>
+                            <option value="Cancelada">Cancelada</option>
+                        </select>
+                        <span asp-validation-for="StatusConsulta" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <!-- Médico -->
+                    <div class="mb-4">
+                        <label asp-for="MedicoId" class="form-label fw-semibold text-secondary">Médico Responsável</label>
+                        <select asp-for="MedicoId" class="form-select" asp-items="ViewBag.MedicoId">
+                            <option value="">-- Selecione o Médico --</option>
+                        </select>
+                        <span asp-validation-for="MedicoId" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <!-- Botões de Ação -->
+                    <div class="d-flex justify-content-between align-items-center pt-2">
+                        <a asp-action="Index" class="btn btn-outline-secondary px-4">Voltar</a>
+                        <button type="submit" class="btn btn-primary px-4 fw-bold shadow-sm">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,123 @@
+﻿@model IEnumerable<appReversotask1.Models.Medico>
+
+@{
+    ViewData["Title"] = "Médicos Cadastrados";
+}
+
+<!-- Ícones do Bootstrap (pode incluir no _Layout.cshtml) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<div class="container mt-4">
+    <!-- Cabeçalho com Ação Principal -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+        <div>
+            <h3 class="fw-bold text-dark mb-1">
+                <i class="bi bi-person-vcard text-primary me-2"></i>Corpo Médico
+            </h3>
+            <p class="text-muted small mb-0">Gerencie os médicos cadastrados no sistema da clínica</p>
+        </div>
+        <div>
+            <a asp-action="Create" class="btn btn-primary fw-semibold shadow-sm px-3">
+                <i class="bi bi-plus-lg me-1"></i> Novo Médico
+            </a>
+        </div>
+    </div>
+
+    <!-- Tabela e Filtros em Card -->
+    <div class="card shadow border-0 rounded-4 overflow-hidden">
+        <!-- Campo de Pesquisa -->
+        <div class="card-header bg-white py-3 px-4 border-bottom-0">
+            <div class="row g-2 align-items-center">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+                        <input type="text" id="searchInput" class="form-control bg-light border-start-0" placeholder="Buscar por médico, CRM, especialidade..." onkeyup="filterTable()">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabela de Conteúdo -->
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="medicosTable">
+                    <thead class="table-light border-bottom">
+                        <tr>
+                            <th class="ps-4">@Html.DisplayNameFor(model => model.Nome)</th>
+                            <th>@Html.DisplayNameFor(model => model.Crm)</th>
+                            <th>@Html.DisplayNameFor(model => model.Especialidade)</th>
+                            <th class="text-end pe-4">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="4" class="text-center py-5 text-muted">
+                                    <i class="bi bi-person-x fs-1 d-block mb-2 text-secondary"></i>
+                                    Nenhum médico encontrado.
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="ps-4 fw-semibold text-dark">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-person-badge text-primary me-2 fs-5"></i>
+                                            <span>@Html.DisplayFor(modelItem => item.Nome)</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-light text-dark border px-3 py-2 fw-semibold">
+                                            @Html.DisplayFor(modelItem => item.Crm)
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-2">
+                                            <i class="bi bi-activity me-1"></i>@Html.DisplayFor(modelItem => item.Especialidade)
+                                        </span>
+                                    </td>
+                                    <td class="text-end pe-4">
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <a asp-action="Edit" asp-route-id="@item.Codigo" class="btn btn-outline-primary" title="Editar">
+                                                <i class="bi bi-pencil me-1"></i>Editar
+                                            </a>
+                                            <a asp-action="Details" asp-route-id="@item.Codigo" class="btn btn-outline-info" title="Detalhes">
+                                                <i class="bi bi-eye me-1"></i>Detalhes
+                                            </a>
+                                            <a asp-action="Delete" asp-route-id="@item.Codigo" class="btn btn-outline-danger" title="Excluir">
+                                                <i class="bi bi-trash me-1"></i>Excluir
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function filterTable() {
+            var input = document.getElementById("searchInput");
+            var filter = input.value.toLowerCase();
+            var table = document.getElementById("medicosTable");
+            var trs = table.getElementsByTagName("tr");
+
+            for (var i = 1; i < trs.length; i++) {
+                var tr = trs[i];
+                if (tr.getElementsByTagName("td").length > 0) {
+                    var text = tr.textContent || tr.innerText;
+                    tr.style.display = text.toLowerCase().indexOf(filter) > -1 ? "" : "none";
+                }
+            }
+        }
+    </script>
+}

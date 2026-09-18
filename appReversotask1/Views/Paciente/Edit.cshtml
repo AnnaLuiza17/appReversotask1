@@ -1,0 +1,69 @@
+﻿@model appReversotask1.Models.Paciente
+
+@{
+    ViewData["Title"] = "Editar Paciente";
+}
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow border-0 rounded-4">
+            <!-- Cabeçalho -->
+            <div class="card-header bg-primary bg-gradient text-white p-4 rounded-top-4 border-0">
+                <h4 class="fw-bold mb-1">
+                    <i class="bi bi-pencil-square me-2"></i>Editar Paciente
+                </h4>
+                <p class="text-white-50 mb-0 small">Atualize os dados cadastrais e de contato do paciente</p>
+            </div>
+
+            <!-- Formulário -->
+            <div class="card-body p-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small" role="alert"></div>
+                    <input type="hidden" asp-for="Codigo" />
+
+                    <!-- Nome -->
+                    <div class="mb-3">
+                        <label asp-for="Nome" class="form-label fw-semibold text-secondary">Nome Completo</label>
+                        <input asp-for="Nome" class="form-control" placeholder="Ex: Maria Silva" />
+                        <span asp-validation-for="Nome" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <!-- CPF -->
+                    <div class="mb-3">
+                        <label asp-for="Cpf" class="form-label fw-semibold text-secondary">CPF</label>
+                        <input asp-for="Cpf" class="form-control" placeholder="000.000.000-00" />
+                        <span asp-validation-for="Cpf" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <!-- Telefone -->
+                    <div class="mb-3">
+                        <label asp-for="Telefone" class="form-label fw-semibold text-secondary">Telefone / WhatsApp</label>
+                        <input asp-for="Telefone" class="form-control" placeholder="(00) 00000-0000" />
+                        <span asp-validation-for="Telefone" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <!-- Data de Nascimento -->
+                    <div class="mb-4">
+                        <label asp-for="DataNascimento" class="form-label fw-semibold text-secondary">Data de Nascimento</label>
+                        <input asp-for="DataNascimento" class="form-control" type="date" />
+                        <span asp-validation-for="DataNascimento" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <!-- Botões de Ação -->
+                    <div class="d-flex justify-content-between align-items-center pt-2">
+                        <a asp-action="Index" class="btn btn-outline-secondary px-4">Voltar</a>
+                        <button type="submit" class="btn btn-primary px-4 fw-bold shadow-sm">
+                            <i class="bi bi-check-lg me-1"></i>Salvar Alterações
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

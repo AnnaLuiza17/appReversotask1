@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br" class="h-100">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Clínica Vida & Saúde</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/appReversotask1.styles.css" asp-append-version="true" />
+</head>
+<body class="d-flex flex-column h-100 bg-light">
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary bg-gradient shadow-sm py-2">
+            <div class="container">
+                <a class="navbar-brand fw-bold fs-5" asp-area="" asp-controller="Home" asp-action="Index">
+                    Clínica Vida & Saúde
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain"
+                        aria-expanded="false" aria-label="Alternar navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Consulta" asp-action="Index">Consultas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidade</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav align-items-md-center gap-2">
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <span class="nav-link text-white-50 py-1">
+                                    Olá, <strong class="text-white">@User.Identity.Name</strong>
+                                </span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light btn-sm px-3 rounded-pill" asp-controller="Account" asp-action="Logout">Sair</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-light text-primary btn-sm px-3 rounded-pill fw-semibold shadow-sm" asp-controller="Account" asp-action="Login">Entrar</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main role="main" class="flex-shrink-0 my-4">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
+
+    <!-- Rodapé Fixo na Parte Inferior -->
+    <footer class="footer mt-auto py-3 bg-white border-top text-muted">
+        <div class="container text-center text-md-start d-md-flex justify-content-between align-items-center small">
+            <div class="mb-2 mb-md-0">
+                &copy; 2026 <strong>Clínica Vida & Saúde</strong>. Todos os direitos reservados.
+            </div>
+            <div>
+                <a class="text-muted text-decoration-none me-3" asp-area="" asp-controller="Home" asp-action="Index">Início</a>
+                <a class="text-muted text-decoration-none" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidade</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

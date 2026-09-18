@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "Política de Privacidade";
+}
+
+<!-- Ícones do Bootstrap (se não estiver no _Layout.cshtml) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<div class="container mt-4 mb-5">
+    <!-- Cabeçalho da Página -->
+    <div class="card shadow-sm border-0 rounded-4 bg-white mb-4">
+        <div class="card-body p-4 p-md-5">
+            <div class="d-flex align-items-center mb-3">
+                <div class="bg-primary-subtle text-primary rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                    <i class="bi bi-shield-check fs-3"></i>
+                </div>
+                <div>
+                    <h2 class="fw-bold text-dark mb-0">@ViewData["Title"]</h2>
+                    <span class="text-muted small">Clínica Vida & Saúde — Proteção e Segurança de Dados</span>
+                </div>
+            </div>
+            <p class="text-muted mb-0">
+                A sua privacidade é fundamental para nós. Esta política descreve como coletamos, usamos, armazenamos e protegemos suas informações pessoais em conformidade com a Lei Geral de Proteção de Dados (LGPD).
+            </p>
+        </div>
+    </div>
+
+    <!-- Tópicos da Política de Privacidade -->
+    <div class="row g-4">
+        <!-- Coleta de Dados -->
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-file-earmark-medical text-primary fs-4 me-2"></i>
+                        <h5 class="fw-bold mb-0">Coleta de Informações</h5>
+                    </div>
+                    <p class="text-muted small mb-0">
+                        Coletamos dados essenciais como CPF, nome completo, dados de contato e histórico de consultas para garantir a prestação adequada dos serviços de saúde e a correta identificação do paciente.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Uso das Informações -->
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-gear-wide-connected text-primary fs-4 me-2"></i>
+                        <h5 class="fw-bold mb-0">Uso dos Dados</h5>
+                    </div>
+                    <p class="text-muted small mb-0">
+                        Seus dados são utilizados exclusivamente para agendamento de consultas, confirmações de atendimento, manutenção do seu prontuário médico e melhoria contínua da sua experiência na clínica.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Segurança dos Dados -->
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-lock text-primary fs-4 me-2"></i>
+                        <h5 class="fw-bold mb-0">Segurança da Informação</h5>
+                    </div>
+                    <p class="text-muted small mb-0">
+                        Adotamos rigorosas medidas técnicas e organizacionais de segurança para proteger suas informações contra acessos não autorizados, perdas, alterações ou divulgações indevidas.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Direitos do Usuário (LGPD) -->
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-person-check text-primary fs-4 me-2"></i>
+                        <h5 class="fw-bold mb-0">Seus Direitos (LGPD)</h5>
+                    </div>
+                    <p class="text-muted small mb-0">
+                        Você tem o direito de solicitar a confirmação do tratamento de seus dados, acesso às informações, correção de dados incompletos ou a exclusão conforme previsto na legislação vigente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Canal de Dúvidas / DPO -->
+    <div class="alert bg-primary-subtle border-primary-subtle rounded-4 p-4 mt-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-0">
+        <div class="d-flex align-items-center">
+            <i class="bi bi-envelope-check fs-2 text-primary me-3"></i>
+            <div>
+                <h6 class="fw-bold text-dark mb-1">Dúvidas sobre a privacidade dos seus dados?</h6>
+                <p class="mb-0 text-muted small">Entre em contato com o nosso Encarregado de Proteção de Dados (DPO).</p>
+            </div>
+        </div>
+        <a href="mailto:privacidade@clinicavidaesaude.com.br" class="btn btn-primary fw-semibold px-4 text-nowrap">
+            Enviar Mensagem
+        </a>
+    </div>
+</div>
