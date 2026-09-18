@@ -114,7 +114,7 @@ A interface do sistema foi remodelada focando em usabilidade e estética profiss
 
 ## Gerenciamento de Médicos
 
-![Lista-Médicos](appReversotask1/Imagens/Lista-Médicos.png)
+![Lista-Médicos](appReversotask1/Imagens/Lista-Médico.png)
 
 ---
 
