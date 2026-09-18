@@ -84,7 +84,7 @@ A interface do sistema foi remodelada focando em usabilidade e estética profiss
 
 ## Cadastro dos Médicos
 
-![Cadastro-Médico](appReversotask1/Imagens/Cadastro-Médicos.png)
+![Cadastro-Médico](appReversotask1/Imagens/Cadastro-Médico.png)
 
 ---
 
