@@ -123,7 +123,7 @@ A interface do sistema foi remodelada focando em usabilidade e estética profiss
 ## 1. Clone o repositório
 
 ```bash
-git clone [https://github.com/SeuUsuario/appReversotask1.git](https://github.com/AnnaLuiza17/appReversotask1.git)
+git clone [https://github.com/AnnaLuiza17/appReversotask1.git]
 ```
 
 ## 2. Abra a solução
